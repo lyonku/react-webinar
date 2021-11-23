@@ -50,7 +50,7 @@ class Store {
     const code = Math.max(0, ...this.state.items.map(item => item.code)) + 1;
     this.setState({
       items: this.state.items.concat({
-        code,
+        code: code,
         title: 'Новая запись №'+code
       })
     });
@@ -74,7 +74,10 @@ class Store {
     this.setState({
       items: this.state.items.map(item => {
         if (item.code === code){
-          item.selected = !item.selected;
+          item.selected = !item.selected
+          if (item.selected) {
+            item.selectedCount = item.selectedCount ? item.selectedCount + 1 : 1
+          }
         }
         return item;
       })
