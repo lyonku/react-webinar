@@ -2,7 +2,14 @@ import React from 'react';
 import './style.css';
 
 function plural(n) {
-  return() => n >= 2  && n <= 4 ? 'раза' : 'раз'
+  if (n >= 12 && n <= 14) {
+    return 'раз';
+  }
+  n %= 10;
+  if (n >= 2 && n <= 4) {
+    return 'раза';
+  }
+  return 'раз';
 }
 
 /**
@@ -26,7 +33,7 @@ function App({store}) {
           >
             <div className='Item' onClick={() => store.selectItem(item.code)}>
               <div className='Item__number'>{item.code}</div>
-              <div className='Item__title'>{`${item.title}  ${item.selectedCount ? ` | Выделяется ${item.selectedCount} раз`: ''}`}</div>
+              <div className='Item__title'>{`${item.title}  ${item.selectedCount ? ` | Выделяется ${item.selectedCount} ${plural(item.selectedCount)}` : '' }`}</div>
               <div className='Item__actions'>
                 <button onClick={() => store.deleteItem(item.code)}>
                   Удалить
