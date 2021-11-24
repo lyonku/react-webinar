@@ -1,6 +1,10 @@
 import React from 'react';
 import './style.css';
 
+function plural(n) {
+  return() => n >= 2  && n <= 4 ? 'раза' : 'раз'
+}
+
 /**
  * Приложение
  * @param store {Store} Состояние с действиями
