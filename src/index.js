@@ -5,6 +5,8 @@ import App from './app.js';
 
 const root = document.getElementById("app");
 
+console.log('index.js');
+
 // Состояние приложения
 const store = new Store({
   items: [

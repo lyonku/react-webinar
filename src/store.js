@@ -74,10 +74,17 @@ class Store {
     this.setState({
       items: this.state.items.map(item => {
         if (item.code === code){
+<<<<<<< HEAD
           item.selected = !item.selected
           if (item.selected) {
             item.selectedCount = item.selectedCount ? item.selectedCount + 1 : 1
           }
+=======
+          return {
+            ...item,
+            selected: !item.selected
+          };
+>>>>>>> upstream/lecture-2
         }
         return item;
       })
