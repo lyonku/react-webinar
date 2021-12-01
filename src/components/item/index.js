@@ -1,6 +1,5 @@
 import React, {useCallback, useState} from "react";
 import propTypes from 'prop-types';
-import plural from 'plural-ru';
 import './styles.css';
 
 function Item({item, onSelect, onAppend}){

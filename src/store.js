@@ -1,3 +1,6 @@
+import plural from 'plural-ru';
+
+
 class Store {
   constructor(initState) {
     // Состояние приложения (данные)
@@ -98,6 +101,14 @@ class Store {
     });
     }
   } 
+
+  summaryLineCounter() {
+    return {
+      totalPrice: this.state.basket.reduce((sum, current) => sum + current.price * current.count, 0),
+      totalCount: this.state.basket.reduce((sum, current) => sum + current.count, 0),
+      wordDeclination: plural(this.totalCount, ' товар', ' товара', ' товаров'),
+    } 
+  }
 }
 
 export default Store;

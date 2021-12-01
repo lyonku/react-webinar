@@ -1,9 +1,7 @@
 import React from "react";
 import './styles.css';
 
-function Modal({active, setActive, basket}) {
-    const totalPrice = basket.reduce((sum, current) => sum + current.price * current.count, 0);
-    const totalCount = basket.reduce((sum, current) => sum + current.count, 0);
+function Modal({active, setActive, basket, onSumCounter}) {
 
     return (
         <div className={active ? 'Modal Modal__active' : 'Modal'} >
@@ -25,7 +23,7 @@ function Modal({active, setActive, basket}) {
                 </div>
             )}
             </div>  
-            <div className='Modal__total'><span>Итого</span> <span>{new Intl.NumberFormat().format(totalPrice)} &#8381;</span> <span>{totalCount} шт</span></div>
+            <div className='Modal__total'><span>Итого</span> <span>{new Intl.NumberFormat().format(onSumCounter().totalPrice)} &#8381;</span> <span>{onSumCounter().totalCount} шт</span></div>
             </div>
         </div>
     )
