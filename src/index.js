@@ -5,7 +5,6 @@ import App from './app.js';
 
 const root = document.getElementById("app");
 
-console.log('index.js');
 
 // Состояние приложения
 const store = new Store({
@@ -17,7 +16,8 @@ const store = new Store({
     {code: 5, title: 'Телефон Iphone XIXV', price: 120000},
     {code: 6, title: 'Карандаши цветные', price: 111},
     {code: 7, title: 'Товар сюрприз', price: 0}
-  ]
+  ],
+  basket: []
 });
 
 // Сообщаем реакту что и куда рендерить.

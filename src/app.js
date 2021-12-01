@@ -9,7 +9,6 @@ import Modal from './components/Modal';
  * @param store {Store} Состояние с действиями
  */
 function App({store}) {
-  console.log('App');
   const [active, setActive] = useState(false)
 
   const callbacks = {
@@ -20,11 +19,13 @@ function App({store}) {
 
   return (
     <Layout head={<h1>Магазин</h1>}>
-      <Controls onCreate={callbacks.onCreateItem} setActive={setActive}/>
+      <Controls basket={store.getState().basket} 
+                onCreate={callbacks.onCreateItem} 
+                setActive={setActive}/>
       <List items={store.getState().items}
             onSelectItem={callbacks.onSelectItem}
-            onDeleteItem={callbacks.onAppendItem}/>
-      <Modal items={store.getState().items}
+            onAppendItem={callbacks.onAppendItem}/>
+      <Modal basket={store.getState().basket}
             active={active} 
             setActive={setActive}/>
     </Layout>
