@@ -83,6 +83,23 @@ class Store {
       })
     });
   }
+
+  /**
+   * Добавление в корзину
+   */
+   appendItem(code) {
+    console.log(this.state.basket)
+    
+    if (this.state.basket.find(item => item.code === code)) {
+      this.setState({
+        basket: this.state.basket.map(item => item.code !== code ? item : {...item, count: item.count + 1})
+      });
+    } else {
+      this.setState({
+        basket: this.state.basket.concat({...this.state.items.filter(item => item.code === code)[0], count: 1})
+    });
+    }
+  } 
 }
 
 export default Store;

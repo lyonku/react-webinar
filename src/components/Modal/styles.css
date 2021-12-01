@@ -1,0 +1,96 @@
+.Modal {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+
+.Modal__content {
+    border-radius: 10px;
+    background-color: white;
+    height: 70vh;
+    width: 50vw;
+}
+
+.Modal__active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.Modal__head{
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    border-radius: 10px;
+    background: #f5f5f5;
+}
+.Modal__head h1{
+    margin: 0;
+    padding: 20px 20px 10px;
+}
+
+.Modal__head button {
+    margin: 30px;
+    height: 21px;
+}
+
+.Modal__item{
+    display: flex;
+    justify-content: flex-start;
+    border-bottom: 1px dashed #ccc;
+    transition: background-color 1s;
+}
+.Modal__item_title{
+    width: 100%;
+    padding: 20px 10px;
+}
+
+.Modal__item_number{
+    padding: 20px 10px 20px 20px;
+}
+
+.Modal__item_price{
+    width: 100%;
+    padding: 20px 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Modal__item_count{
+    width: 20%;
+    padding: 20px 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.Modal__controls{
+    display: flex;
+    justify-content: flex-end;
+    padding: 40px;
+    border-bottom: 1px dashed #ccc;
+    transition: background-color 1s;
+}
+
+.Modal__total {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 25px;
+    font-family: Arial;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.Modal__total span {
+    padding-left: 50px;
+    padding-right: 20px;
+}

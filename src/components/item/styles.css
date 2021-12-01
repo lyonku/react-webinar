@@ -14,10 +14,18 @@
     padding: 20px 10px;
 }
 .Item__actions{
+    width: 80px;
     padding: 20px  20px 20px 10px;
     display: flex;
     justify-content: flex-end;
 }
 .Item__number{
     padding: 20px 10px 20px 20px;
+}
+
+.Item__price{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 10px;
 }

@@ -3,7 +3,7 @@ import propTypes from 'prop-types';
 import plural from 'plural-ru';
 import './styles.css';
 
-function Item({item, onSelect, onDelete}){
+function Item({item, onSelect, onAppend}){
   console.log('Item', item.title);
 
   const [counter, setCounter] = useState(0);
@@ -20,13 +20,11 @@ function Item({item, onSelect, onDelete}){
   return (
     <div className={'Item'  + (item.selected ? ' Item_selected' : '')} onClick={callbacks.onClick}>
       <div className='Item__number'>{item.code}</div>
-      <div className='Item__title'>
-        {item.title}
-        {counter ? ` | Выделялся ${counter} ${plural(counter, 'раз', 'раза', 'раз')}` : null}
-      </div>
+      <div className='Item__title'>{item.title}</div>
+      <div className='Item__price'>{new Intl.NumberFormat().format(item.price)} &#8381;</div>
       <div className='Item__actions'>
-        <button onClick={() => onDelete(item.code)}>
-          Удалить
+        <button onClick={() => onAppend(item.code)}>
+          Добавить
         </button>
       </div>
     </div>
@@ -36,12 +34,12 @@ function Item({item, onSelect, onDelete}){
 Item.propTypes = {
   item: propTypes.object.isRequired,
   onSelect: propTypes.func.isRequired,
-  onDeleted: propTypes.func.isRequired
+  onAppend: propTypes.func.isRequired
 }
 
 Item.defaultProps = {
   onSelect: () => {},
-  onDeleted: () => {}
+  onAppend: () => {}
 }
 
 export default React.memo(Item);
