@@ -2,7 +2,6 @@ import React from "react";
 import './styles.css';
 
 function Layout({head, content, children}){
-  console.log('Layout');
   return (
     <div className='Layout'>
       <div className='Layout__head'>

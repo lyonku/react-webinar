@@ -1,29 +1,44 @@
-import React from "react";
+import React, {useCallback, useState} from 'react';
 import propTypes from 'prop-types';
 import './styles.css';
 import plural from 'plural-ru';
+import Modal from '/components/Modal';
 
 
-function Controls({setActive, store}){
-  // const totalPrice = store.state.basket.reduce((sum, current) => sum + current.price * current.count, 0);
-  // const totalCount = store.state.basket.reduce((sum, current) => sum + current.count, 0);
-  // const wordDeclination = plural(totalCount, ' товар', ' товара', ' товаров');
-  console.log('Controls');
+function Controls({basket, onSumCounter}){
+  const [active, setActive] = useState(false)
+
+  const callbacks = {
+    onClick: useCallback(() => {
+      setActive(true) 
+  }, [setActive, basket])};
+
+
   return <div className='Controls'>
-    {/* <div className='Controls__basket'>В корзине: {totalCount == 0 ? <span>Пусто</span>: <span>{totalCount} {wordDeclination} / {new Intl.NumberFormat().format(totalPrice)} &#8381; </span>}</div> */}
-    <button onClick={() => setActive(true)}> Перейти</button>
+    <div className='Controls__basket'>
+      В корзине: {onSumCounter().totalCount == 0 ? 
+      <span> Пусто</span>: 
+      <span>
+        {onSumCounter().totalCount} 
+        {onSumCounter().wordDeclination} / {new Intl.NumberFormat().format(onSumCounter().totalPrice)} 
+        &#8381; 
+      </span>}
+    </div>
+    <button onClick={callbacks.onClick}> Перейти</button>
+    <Modal basket={basket}
+            active={active} 
+            setActive={setActive}
+            onSumCounter={onSumCounter}/>
   </div>
   
 }
 
 Controls.propTypes = {
-  setActive: propTypes.func.isRequired,
-  store: propTypes.func.isRequired
+  onSumCounter: propTypes.func.isRequired
 }
 
 Controls.defaultProps = {
-  setActive: () => {},
-  store: () => {}
+  onSumCounter: () => {}
 }
 
 export default React.memo(Controls);

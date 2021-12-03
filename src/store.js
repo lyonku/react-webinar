@@ -1,3 +1,6 @@
+import plural from 'plural-ru';
+
+
 class Store {
   constructor(initState) {
     // Состояние приложения (данные)
@@ -31,7 +34,7 @@ class Store {
    * @param newState {*}
    */
   setState(newState) {
-    this.state = newState;
+    this.state = {...this.state, ...newState};
     // Оповещаем всех подписчиков об изменении стейта
     for (const lister of this.listners) {
       lister(this.state);
@@ -88,8 +91,6 @@ class Store {
    * Добавление в корзину
    */
    appendItem(code) {
-    console.log(this.state.basket)
-    
     if (this.state.basket.find(item => item.code === code)) {
       this.setState({
         basket: this.state.basket.map(item => item.code !== code ? item : {...item, count: item.count + 1})
@@ -100,6 +101,14 @@ class Store {
     });
     }
   } 
+
+  summaryLineCounter() {
+    return {
+      totalPrice: this.state.basket.reduce((sum, current) => sum + current.price * current.count, 0),
+      totalCount: this.state.basket.reduce((sum, current) => sum + current.count, 0),
+      wordDeclination: plural(this.totalCount, ' товар', ' товара', ' товаров'),
+    } 
+  }
 }
 
 export default Store;
