@@ -2,29 +2,34 @@ import React, {useCallback, useState} from 'react';
 import Controls from "./components/controls";
 import List from "./components/list";
 import Layout from "./components/layout";
+import Modal from './components/modal';
 
 /**
  * Приложение
  * @param store {Store} Состояние с действиями
  */
 function App({store}) {
+  const [active, setActive] = useState(false)
 
   const callbacks = {
     onCreateItem: useCallback(() => store.createItem(), [store]),
     onSelectItem: useCallback((code) => store.selectItem(code), [store]),
-    onAppendItem: useCallback((code) => store.appendItem(code), [store]),
-    onSumCounter: useCallback(() => store.summaryLineCounter(), [store])
+    onAppendItem: useCallback((code) => store.appendItem(code), [store])
   }
 
   return (
     <Layout head={<h1>Магазин</h1>}>
-      <Controls basket={store.getState().basket} 
+      <Controls basket={store.getState().basket}
+                totalSum={store.getState().totalSum}
                 onCreateItem={callbacks.onCreateItem}
-                onSumCounter={callbacks.onSumCounter}/>
+                setActive={setActive}/>
       <List items={store.getState().items}
             onSelectItem={callbacks.onSelectItem}
             onAppendItem={callbacks.onAppendItem}/>
-      
+      <Modal basket={store.getState().basket}
+            totalSum={store.getState().totalSum}
+            active={active} 
+            setActive={setActive}/>
     </Layout>
   );
 }

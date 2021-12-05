@@ -91,6 +91,7 @@ class Store {
    * Добавление в корзину
    */
    appendItem(code) {
+     
     if (this.state.basket.find(item => item.code === code)) {
       this.setState({
         basket: this.state.basket.map(item => item.code !== code ? item : {...item, count: item.count + 1})
@@ -100,15 +101,15 @@ class Store {
         basket: this.state.basket.concat({...this.state.items.filter(item => item.code === code)[0], count: 1})
     });
     }
+    
+    this.setState({
+      totalSum:
+        {price: this.state.basket.reduce((sum, current) => sum + current.price * current.count, 0),
+        count: this.state.basket.reduce((sum, current) => sum + current.count, 0),
+        wordDeclination: plural(this.state.totalSum.count + 1, ' товар', ' товара', ' товаров'),
+      }
+    })
   } 
-
-  summaryLineCounter() {
-    return {
-      totalPrice: this.state.basket.reduce((sum, current) => sum + current.price * current.count, 0),
-      totalCount: this.state.basket.reduce((sum, current) => sum + current.count, 0),
-      wordDeclination: plural(this.totalCount, ' товар', ' товара', ' товаров'),
-    } 
-  }
 }
 
 export default Store;
