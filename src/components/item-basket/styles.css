@@ -1,0 +1,32 @@
+/* Пункт списка */
+.ItemBasket {
+    display: flex;
+    justify-content: flex-start;
+    transition: background-color 1s;
+}
+
+.ItemBasket_selected {
+    background: #75aaf1;
+}
+
+.ItemBasket__number {
+    padding: 20px 10px 20px 20px;
+}
+
+.ItemBasket__title {
+    width: 100%;
+    padding: 20px 10px;
+}
+
+.ItemBasket__right {
+    padding: 20px 20px 20px 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.ItemBasket__cell {
+    min-width: 100px;
+    text-align: right;
+    font-size: 18px;
+}

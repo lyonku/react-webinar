@@ -16,9 +16,7 @@ const store = new Store({
     {code: 5, title: 'Телефон Iphone XIXV', price: 120000},
     {code: 6, title: 'Карандаши цветные', price: 111},
     {code: 7, title: 'Товар сюрприз', price: 0}
-  ],
-  basket: [],
-  totalSum: {price: 0, count: 0, wordDeclination: ''}
+  ]
 });
 
 // Сообщаем реакту что и куда рендерить.

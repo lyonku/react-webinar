@@ -1,28 +1,19 @@
-import React, {useCallback, useState} from 'react';
+import React from "react";
+import propTypes from 'prop-types';
 import './styles.css';
 
-
-function Controls({basket, setActive, totalSum}){
-
-  const callbacks = {
-    onClick: useCallback(() => {
-      setActive(true) 
-  }, [setActive, basket])};
-
+function Controls({onCreate}){
   return <div className='Controls'>
-    <div className='Controls__basket'>
-      
-      В корзине: {totalSum.count == 0 ? 
-      <span> Пусто</span>: 
-      <span>
-        {totalSum.count} 
-        {totalSum.wordDeclination} / {new Intl.NumberFormat().format(totalSum.price)} 
-        &#8381; 
-      </span>}
-    </div>
-    <button onClick={callbacks.onClick}> Перейти</button>
+    <button onClick={onCreate}> Перейти</button>
   </div>
-  
+}
+
+Controls.propTypes = {
+  onCreate: propTypes.func.isRequired
+}
+
+Controls.defaultProps = {
+  onCreate: () => {}
 }
 
 export default React.memo(Controls);

@@ -1,27 +1,17 @@
 import React, {useCallback, useState} from "react";
 import propTypes from 'prop-types';
 import './styles.css';
+import numberFormat from "../../utils/number-format";
 
-function Item({item, onSelect, onAppend}){
-
-  const [counter, setCounter] = useState(0);
-
-  const callbacks = {
-    onClick: useCallback(() => {
-      // onSelect(item.code);
-      // if (!item.selected){
-        setCounter(counter + 1);
-      // }
-    }, [item, onSelect, counter, setCounter])
-  };
+function Item({item, onAdd}){
 
   return (
-    <div className={'Item'  + (item.selected ? ' Item_selected' : '')} onClick={callbacks.onClick}>
+    <div className='Item'>
       <div className='Item__number'>{item.code}</div>
       <div className='Item__title'>{item.title}</div>
-      <div className='Item__price'>{new Intl.NumberFormat().format(item.price)} &#8381;</div>
+      <div className='Item__price'>{numberFormat(item.price)} &#8381;</div>
       <div className='Item__actions'>
-        <button onClick={() => onAppend(item.code)}>
+        <button onClick={() => onAdd(item.code)}>
           Добавить
         </button>
       </div>
@@ -31,13 +21,11 @@ function Item({item, onSelect, onAppend}){
 
 Item.propTypes = {
   item: propTypes.object.isRequired,
-  onSelect: propTypes.func.isRequired,
-  onAppend: propTypes.func.isRequired
+  onAdd: propTypes.func
 }
 
 Item.defaultProps = {
-  onSelect: () => {},
-  onAppend: () => {}
+  onAdd: () => {}
 }
 
 export default React.memo(Item);
