@@ -3,18 +3,22 @@ import propTypes from 'prop-types';
 import plural from "plural-ru";
 import numberFormat from "../../utils/number-format";
 import './styles.css';
+import {Link} from "react-router-dom";
 
 function BasketSimple({sum, amount, onOpen}) {
   return (
     <div className='BasketSimple'>
-      <span className="BasketSimple__label">В корзине:</span>
-      <span className="BasketSimple__total">
-      {amount
-        ? `${amount} ${plural(amount, 'товар', 'товара', 'товаров')} / ${numberFormat(sum)} ₽`
-        : `пусто`
-      }
-      </span>
-      <button className='BasketSimple__button' onClick={onOpen}>Перейти</button>
+      <Link to='/' className="BasketSimple__main">Главная</Link>
+      <div>
+        <span className="BasketSimple__label">В корзине:</span>
+        <span className="BasketSimple__total">
+        {amount
+          ? `${amount} ${plural(amount, 'товар', 'товара', 'товаров')} / ${numberFormat(sum)} ₽`
+          : `пусто`
+        }
+        </span>
+        <button className='BasketSimple__button' onClick={onOpen}>Перейти</button>
+      </div>
     </div>
   )
 }

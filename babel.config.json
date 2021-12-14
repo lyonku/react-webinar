@@ -5,10 +5,14 @@
   ],
   "env": {
     "development": {
-      "plugins": []
+      "plugins": [
+        "@babel/plugin-transform-runtime"
+      ]
     },
     "production": {
-      "plugins": []
+      "plugins": [
+        "@babel/plugin-transform-runtime"
+      ]
     }
   }
 }

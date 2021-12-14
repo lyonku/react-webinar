@@ -6,7 +6,7 @@ import './styles.css';
 function ItemBasket({item}) {
   return (
     <div className='ItemBasket'>
-      <div className='ItemBasket__number'>{item.code}</div>
+      <div className='ItemBasket__number'>{item._key}</div>
       <div className='ItemBasket__title'>{item.title}</div>
       <div className='ItemBasket__right'>
         <span className="ItemBasket__cell">{numberFormat(item.price || 0)} ₽</span>

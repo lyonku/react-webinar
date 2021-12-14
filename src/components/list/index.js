@@ -1,18 +1,17 @@
-import React from "react";
+import React from 'react';
 import propTypes from 'prop-types';
-import Item from "../item";
 import './styles.css';
 
-function List({items, renderItem}){
-  
+function List({items, renderItem}) {
   return (
-    <div className='List'>{items.map(item =>
-      <div className='List__item' key={item.code}>
-        {renderItem(item)}
-      </div>
-    )}
+    <div className='List'>
+      {items.map(item =>
+        <div key={item._id} className='List__item'>
+          {renderItem(item)}
+        </div>
+      )}
     </div>
-  )
+  );
 }
 
 List.propTypes = {
@@ -23,7 +22,7 @@ List.propTypes = {
 List.defaultProps = {
   items: [],
   renderItem: (item) => {
-    renderItem.toString()
+    return item.toString()
   }
 }
 
