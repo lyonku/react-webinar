@@ -30,10 +30,16 @@ class BasketStore extends StoreModule {
     });
 
     if (!exists) {
+      console.log(this.store.getState().catalog)
       // Если товар не был найден в корзине, то добавляем его из каталога
       // Поиск товара в каталоге, чтобы его в корзину добавить
-      const item = this.store.getState().catalog.items.find(item => item._id === id);
-      items.push({...item, amount: 1});
+      if (this.store.getState().catalog.items) {
+        const item = this.store.getState().catalog.items.find(item => item._id === id);
+        items.push({...item, amount: 1});
+      } else {
+        items.push({...this.store.getState().catalog.item, amount: 1});
+      }
+      
     }
 
     // Считаем суммы

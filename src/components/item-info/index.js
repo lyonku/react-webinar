@@ -1,5 +1,4 @@
 import React from "react";
-import propTypes from 'prop-types';
 import './styles.css';
 import numberFormat from "../../utils/number-format";
 
@@ -12,11 +11,11 @@ function ItemInfo(props) {
             <p className='ItemInfo__category'>Категория: <strong>{props.itemInfo.category.title}</strong></p>
             <p className='ItemInfo__edition'>Год выпуска: <strong>{props.itemInfo.edition}</strong></p>
             <h3 className='ItemInfo__price'>Цена: {numberFormat(props.itemInfo.price || 0)} ₽</h3>
-            <button className='ItemInfo__add-button' onClick={props.onAdd}>Добавить</button>
+            <button onClick={props.onAdd}>Добавить</button>
     </div>
           );
     } else {
-        return <div>Загрузка</div>;
+        return '';
     }
   
 }
