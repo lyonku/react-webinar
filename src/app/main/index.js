@@ -5,7 +5,6 @@ import BasketSimple from "../../components/basket-simple";
 import List from "../../components/list";
 import useStore from "../../utils/use-store";
 import useSelector from "../../utils/use-selector";
-import item from "../../components/item";
 import Pagination from "../../components/pagination";
 
 function Main() {

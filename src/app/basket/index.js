@@ -22,7 +22,7 @@ function Basket(){
 
   const renders = {
     itemBasket: useCallback(item => {
-      return <ItemBasket item={item}/>
+      return <ItemBasket item={item} onClose={callbacks.closeModal}/>
     }, [])
   }
 
