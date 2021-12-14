@@ -5,10 +5,14 @@ import BasketSimple from "../../components/basket-simple";
 import List from "../../components/list";
 import useStore from "../../utils/use-store";
 import useSelector from "../../utils/use-selector";
+import item from "../../components/item";
+import Pagination from "../../components/pagination";
 
 function Main() {
 
   const select = useSelector(state => ({
+    page: state.catalog.page,
+    pagesCount: state.catalog.pagesCount,
     items: state.catalog.items,
     amount: state.basket.amount,
     sum: state.basket.sum
@@ -32,10 +36,12 @@ function Main() {
     }, [callbacks.addToBasket]),
   }
 
+  console.log(select)
   return (
     <Layout head={<h1>Магазин</h1>}>
       <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>
       <List items={select.items} renderItem={renders.item}/>
+      {select.pagesCount > 1 && <Pagination pages={select.pagesCount} page={select.page}/>}
     </Layout>
   );
 }

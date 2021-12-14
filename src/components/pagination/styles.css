@@ -1,0 +1,23 @@
+.Pagination__button {
+  padding: 3px;
+  border: none;
+  background: white;
+}
+
+.Pagination__button_current {
+  padding: 3px;
+  border: none;
+  color: white;
+  background: #000000;
+}
+
+.Pagination__button:hover {
+	background: #E1E1E1;
+}
+
+.Pagination__list {
+  display: flex;
+  margin: 0;
+  justify-content: right;
+  padding: 20px 20px;
+}

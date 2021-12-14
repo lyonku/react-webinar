@@ -2,6 +2,7 @@ import React from 'react';
 import Main from "./main";
 import Basket from "./basket";
 import useSelector from "../utils/use-selector";
+import ItemPage from './item-page';
 
 /**
  * Приложение
