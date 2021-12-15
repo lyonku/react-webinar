@@ -40,7 +40,7 @@ function Main() {
     <Layout head={<h1>Магазин</h1>}>
       <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>
       <List items={select.items} renderItem={renders.item}/>
-      {select.pagesCount > 1 && <Pagination pages={select.pagesCount} page={select.page}/>}
+      <Pagination pages={select.pagesCount} page={select.page}/>
     </Layout>
   );
 }

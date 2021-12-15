@@ -23,7 +23,7 @@ function ItemPage(){
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {
       await store.catalog.loadOne(id);
-    }, []);
+  }, [id]);
 
   const callbacks = {
     addToBasket: useCallback(() => store.basket.add(id), [store]),

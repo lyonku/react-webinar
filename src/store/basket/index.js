@@ -30,7 +30,6 @@ class BasketStore extends StoreModule {
     });
 
     if (!exists) {
-      console.log(this.store.getState().catalog)
       // Если товар не был найден в корзине, то добавляем его из каталога
       // Поиск товара в каталоге, чтобы его в корзину добавить
       if (this.store.getState().catalog.items) {
@@ -39,7 +38,6 @@ class BasketStore extends StoreModule {
       } else {
         items.push({...this.store.getState().catalog.item, amount: 1});
       }
-      
     }
 
     // Считаем суммы
