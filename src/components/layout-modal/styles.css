@@ -49,4 +49,6 @@
 .LayoutModal__content {
   min-height: 100px;
   padding: 70px 0;
+  overflow-y: scroll;
+  max-height: 600px;
 }
