@@ -12,17 +12,19 @@ function ItemPage(){
   const id = useParams().itemId;
 
   const store = useStore();
-
+  
   const select = useSelector(state => ({
-    item: state.catalog.item,
+    item: state.card.item,
     items: state.basket.items,
     sum: state.basket.sum,
     amount: state.basket.amount
   }));
 
+  console.log(select)
+
   // Загрузка тестовых данных при первом рендере
   useEffect(async () => {
-      await store.catalog.loadOne(id);
+      await store.card.loadOne(id);
   }, [id]);
 
   const callbacks = {

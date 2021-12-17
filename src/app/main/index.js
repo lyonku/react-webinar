@@ -36,7 +36,6 @@ function Main() {
     }, [callbacks.addToBasket]),
   }
 
-  console.log(select)
   return (
     <Layout head={<h1>Магазин</h1>}>
       <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>

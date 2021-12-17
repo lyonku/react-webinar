@@ -1,3 +1,5 @@
+import ItemCard from "./item-card";
+
 /**
  * Хранилище состояния приложения
  */
@@ -84,6 +86,13 @@ class Store {
    */
   get catalog(){
     return this.get('catalog');
+  }
+
+  /**
+   * @return {ItemCard}
+   */
+   get card(){
+    return this.get('card');
   }
 }
 

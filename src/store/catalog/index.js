@@ -8,7 +8,6 @@ class CatalogStore extends StoreModule {
    */
   initState() {
     return {
-      item: null,
       items: [],
       pagesCount: 0,
       page: 0
@@ -29,15 +28,6 @@ class CatalogStore extends StoreModule {
       page 
     });
   }
-
-  async loadOne(id){
-    const response = await fetch(`/api/v1/articles/${id}?fields=*,maidIn(title,code),category(title)`);
-    const json = await response.json();
-    this.setState({
-      item: json.result
-    });
-  }
-
 }
 
 export default CatalogStore;
