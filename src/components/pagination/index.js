@@ -1,10 +1,8 @@
 import React from 'react';
 import './styles.css';
-import useStore from "../../utils/use-store";
 
 function Pagination(props) {
 
-    const store = useStore();
     if (props.pages == 0) {
         return <div>Загрузка...</div>;
     } else {
@@ -15,7 +13,7 @@ function Pagination(props) {
                         className={index == props.page ? 'Pagination__button_current' : 'Pagination__button'} 
                         key={index} 
                         onClick={() => {
-                            store.catalog.load(index)
+                            props.pageSelection(index)
                         }}
                     >
                         {index + 1}

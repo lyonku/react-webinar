@@ -27,6 +27,7 @@ function Main() {
   const callbacks = {
     addToBasket: useCallback((_id) => store.basket.add(_id), [store]),
     openModal: useCallback(() => store.modals.open('basket'), [store]),
+    pageSelection: useCallback((index) => store.catalog.load(index), [store])
   }
 
   const renders = {
@@ -40,7 +41,7 @@ function Main() {
     <Layout head={<h1>Магазин</h1>}>
       <BasketSimple onOpen={callbacks.openModal} amount={select.amount} sum={select.sum}/>
       <List items={select.items} renderItem={renders.item}/>
-      <Pagination pages={select.pagesCount} page={select.page}/>
+      <Pagination pages={select.pagesCount} page={select.page} pageSelection={callbacks.pageSelection}/>
     </Layout>
   );
 }
