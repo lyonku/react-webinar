@@ -16,9 +16,30 @@ GET http://example.front.ylab.io/api/v1/articles?limit=20&skip=10&fields=items(*
 ###
 # Товар по id
 
-GET http://example.front.ylab.io/api/v1/articles/5ecba930b6b0b01fd3dd35de
+GET http://example.front.ylab.io/api/v1/articles/61c0a9cb8f67e811d55abb40
 
 ###
 # Товар по id с кучей свойств
 
-GET http://example.front.ylab.io/api/v1/articles/5ecba930b6b0b01fd3dd35de?fields=*,maidIn(title,code),category(title)
+GET http://example.front.ylab.io/api/v1/articles/61c0a9cb8f67e811d55abb40?fields=*,maidIn(title,code),category(title)
+
+
+###
+# Сохранение товара
+
+PUT http://example.front.ylab.io/api/v1/articles/61c0a9cb8f67e811d55abb40
+Content-Type: application/json
+
+{
+  "_id": "61c0a9cb8f67e811d55abb40",
+  "title": "Товар #11",
+  "description": "Описание товара из множества букв",
+  "price": 3970.52,
+  "maidIn": {
+    "_id": "61c0a9b58f67e811d55ab056"
+  },
+  "edition": 2011,
+  "category": {
+    "_id": "61c0a9cb8f67e811d55abb32"
+  }
+}

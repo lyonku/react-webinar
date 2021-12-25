@@ -1,23 +1,30 @@
-.Pagination__button {
-  padding: 3px;
-  border: none;
-  background: white;
-}
-
-.Pagination__button_current {
-  padding: 3px;
-  border: none;
-  color: white;
-  background: #000000;
-}
-
-.Pagination__button:hover {
-	background: #E1E1E1;
-}
-
-.Pagination__list {
+.Pagination{
   display: flex;
-  margin: 0;
-  justify-content: right;
-  padding: 20px 20px;
+  list-style: none;
+  justify-content: flex-end;
+  padding: 20px;
+  font-size: 18px;
+}
+
+.Pagination-item{
+  display: block;
+  padding: 2px 4px 3px 2px;
+  margin: 0 2px;
+  cursor: pointer;
+}
+
+.Pagination-item:hover{
+  background: #E1E1E1;
+}
+
+.Pagination-item_active,
+.Pagination-item_active:hover{
+  background: #000;
+  color: #fff;
+}
+
+.Pagination-item_split,
+.Pagination-item_split:hover{
+  background: transparent;
+  cursor: default;
 }

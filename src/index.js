@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {BrowserRouter} from "react-router-dom";
 import Store from './store';
 import App from './app';
 import StoreProvider from "./store/provider";
@@ -13,7 +14,9 @@ const store = new Store(modules);
 // Сообщаем реакту что и куда рендерить.
 ReactDOM.render(
   <StoreProvider store={store}>
-    <App />
+    <BrowserRouter>
+      <App/>
+    </BrowserRouter>
   </StoreProvider>,
   root
 );

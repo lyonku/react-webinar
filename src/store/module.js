@@ -38,6 +38,17 @@ class StoreModule {
       [this.name]: state,
     });
   }
+
+  /**
+   * Обновление состояния
+   * @param patch
+   */
+  updateState(patch) {
+    this.setState({
+      ...this.getState(),
+      ...patch
+    })
+  }
 }
 
 export default StoreModule;
