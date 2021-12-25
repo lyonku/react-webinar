@@ -1,0 +1,14 @@
+.Menu{
+  display: flex;
+  list-style: none;
+  justify-content: flex-start;
+  padding: 0 20px;
+  font-size: 18px;
+}
+
+.Menu-item{
+  display: block;
+  padding: 2px 4px 3px 2px;
+  margin: 0 2px;
+}
+

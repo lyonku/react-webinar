@@ -1,0 +1,18 @@
+.LayoutSides{
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+}
+.LayoutSides-left{
+
+}
+
+.LayoutSides-center{
+  flex: 1;
+}
+
+.LayoutSides-right{
+
+}
+
+

@@ -1,0 +1,5 @@
+###
+# Список всех категорий
+
+GET http://example.front.ylab.io/api/v1/categories?limit=*&fields=_id,parent,title
+

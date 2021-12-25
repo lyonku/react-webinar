@@ -1,0 +1,5 @@
+###
+# Список всех стран
+
+GET http://example.front.ylab.io/api/v1/countries?limit=*&fields=_id,title,code&sort=title.ru
+
