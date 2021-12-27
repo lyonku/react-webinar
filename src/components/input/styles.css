@@ -7,3 +7,6 @@
   width: 300px;
 }
 
+.Input.textarea {
+  height: 100px;
+}

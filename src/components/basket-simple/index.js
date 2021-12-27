@@ -3,7 +3,6 @@ import propTypes from 'prop-types';
 import plural from "plural-ru";
 import numberFormat from "../../utils/number-format";
 import './styles.css';
-import {Link} from "react-router-dom";
 
 function BasketSimple({sum, amount, onOpen}) {
   return (

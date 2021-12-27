@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import {cn} from '@bem-react/classname'
 import './styles.css';
 import numberFormat from "../../utils/number-format";
+import {Link} from "react-router-dom";
 
 function ArticleCard({article, onAdd}) {
 
@@ -11,6 +12,7 @@ function ArticleCard({article, onAdd}) {
 
   return (
     <div className={className()}>
+      <Link to={'./edit'}>Редактировать</Link>
       <div className={className('Description')}>{article.description}</div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Страна производитель:</div>

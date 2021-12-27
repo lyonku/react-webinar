@@ -13,7 +13,7 @@ function CatalogFilter() {
     sort: state.catalog.params.sort,
     query: state.catalog.params.query,
     categories: state.categories.items,
-    category: state.catalog.params.category
+    category: state.catalog.params.category,
   }));
 
   // Опции для полей
@@ -25,10 +25,10 @@ function CatalogFilter() {
       {value:'edition', title: 'Древние'},
     ]), []),
 
-    categories: useMemo((parent = null, nestDegree = 0) => [
+    categories: useMemo(() => [
       {value: '', title: 'Все'},
       ...select.categories.map((item) => 
-        (item.parent !== null ? ( console.log(item),
+        (item.parent !== null ? (
         {value: item._id, title: '- '.repeat(1) + item.title}) : 
         {value: item._id, title: item.title} ))], [select.categories])
   }

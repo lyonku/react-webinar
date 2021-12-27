@@ -1,0 +1,38 @@
+.ArticleForm {
+  padding: 20px 35px;
+}
+
+.ArticleForm-Prop {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.ArticleForm-Label {
+  margin-bottom: 5px;
+  font: bold 14px/18px Arial, sans-serif;
+}
+
+.ArticleForm-Input {
+  font: normal 14px/18px Arial, sans-serif;
+}
+
+.ArticleForm-Title,
+.ArticleForm-Country {
+  min-width: 250px;
+}
+
+.ArticleForm-Description {
+  align-self: stretch;
+  min-height: 100px;
+}
+
+.ArticleForm-Edition,
+.ArticleForm-Price {
+  min-width: 180px;
+}
+
+.ArticleForm-Submit {
+  padding: 0 10px;
+}
