@@ -8,7 +8,6 @@ import {Link} from "react-router-dom";
 function BasketSimple({sum, amount, onOpen}) {
   return (
     <div className='BasketSimple'>
-      <Link to='/' className="BasketSimple__main">Главная</Link>
       <div>
         <span className="BasketSimple__label">В корзине:</span>
         <span className="BasketSimple__total">

@@ -1,3 +1,4 @@
+import CategoriesStore from "./categories";
 import ItemCard from "./item-card";
 
 /**
@@ -93,6 +94,13 @@ class Store {
    */
    get card(){
     return this.get('card');
+  }
+
+  /**
+   * @return {CategoriesStore}
+   */
+   get categories(){
+    return this.get('categories');
   }
 }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import {Link} from "react-router-dom";
 import numberFormat from "../../utils/number-format";
 import './styles.css';
 import {Link} from "react-router-dom";
