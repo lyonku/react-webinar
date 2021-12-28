@@ -8,7 +8,8 @@ class ArticleStore extends StoreModule {
   initState() {
     return {
       data: {},
-      waiting: true
+      waiting: true,
+      error: null
     };
   }
 
@@ -41,12 +42,26 @@ class ArticleStore extends StoreModule {
   }
 
   async update(id, data) {
+    
+
     const response = await fetch(`/api/v1/articles/${id}`, {
       method: 'PUT',
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
       }
+    })
+
+    this.updateState({
+      waiting: true,
+      data
+    });
+    
+    const json = await response.json();
+
+    this.updateState({
+      waiting: false,
+      error: json.error
     });
   }
 }

@@ -27,13 +27,12 @@ function ArticleEdit() {
     waiting: state.article.waiting,
     categories: state.categories.items,
     countries: state.countries.items,
+    error: state.article.error
   }));
 
   const callbacks = {
     onSave: useCallback((id, data) => store.get('article').update(id, data), [store])
   }
-  console.log(store)
-  const title = useMemo(() => select.article.title, [select.waiting])
 
   return (
     <Layout head={<h1>{select.article.title}</h1>}>
@@ -45,6 +44,7 @@ function ArticleEdit() {
           article={select.article} 
           categories={select.categories} 
           countries={select.countries}
+          error={select.error}
           onSave={callbacks.onSave}/>
       </Spinner>
     </Layout>

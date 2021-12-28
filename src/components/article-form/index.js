@@ -5,11 +5,9 @@ import Select from "../select";
 import './styles.css';
 import '../input/styles.css';
 
-function ArticleForm({article, categories, countries, onSave}) {
+function ArticleForm({article, categories, countries, onSave, error}) {
 
   const [data, setData] = useState(article)
-  console.log(data)
-  
 
   // CSS классы по БЭМ
   const className = cn('ArticleForm');
@@ -21,32 +19,35 @@ function ArticleForm({article, categories, countries, onSave}) {
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Описание</div>
-        <textarea className={className('Description Input')} defaultValue={article.description}/>
+        <textarea className={className('Description Input')} value={data.description} onChange={(event) => setData({...data, description: event.target.value})}/>
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Страна производитель</div>
-        <Select options={countries} />
+        <Select options={countries} value={data?.maidIn?._id} onChange={_id => setData({...data, maidIn: { _id }})}/>
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Категория</div>
-        <Select options={categories} />
+        <Select options={categories} value={data?.category?._id} onChange={_id => setData({...data, category: { _id }})}/>
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Год выпуска</div>
-        <input className={className('Input')} defaultValue={article.edition}/>
+        <input className={className('Input')} value={data.edition} onChange={(event) => setData({...data, edition: event.target.value})}/>
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Цена (₽)</div>
-        <input className={className('Input')} defaultValue={article.price}/>
+        <input className={className('Input')} value={data.price} onChange={(event) => setData({...data, price: event.target.value})}/>
       </div>
       <button className={className('Submit')} onClick={() => onSave(article._id, data)}>Сохранить</button>
-      
+      {error && (
+        <div className={className('Error')}>ERROR: {error.message}</div>
+      )}
     </div>
   )
 }
 
 ArticleForm.propTypes = {
-  article: propTypes.object.isRequired
+  article: propTypes.object.isRequired,
+  onSave: propTypes.func
 }
 
 ArticleForm.defaultProps = {
