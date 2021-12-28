@@ -27,13 +27,8 @@ function CatalogFilter() {
 
     categories: useMemo(() => [
       {value: '', title: 'Все'},
-      ...select.categories.map((item) => 
-        (item.parent !== null ? (
-        {value: item._id, title: '- '.repeat(1) + item.title}) : 
-        {value: item._id, title: item.title} ))], [select.categories])
+      ...select.categories], [select.categories])
   }
-
-  
 
   useEffect(async () => {
     await store.categories.fetchAll();

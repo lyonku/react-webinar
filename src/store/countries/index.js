@@ -8,7 +8,7 @@ class CountriesStore extends StoreModule {
     }
   }
 
-  async fetchAll() {
+  async load() {
     const response = await fetch(`/api/v1/countries?limit=*&fields=_id,title,code&sort=title.ru`);
     const json = await response.json();
 

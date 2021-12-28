@@ -1,6 +1,6 @@
 import StoreModule from "../module";
 
-class ArticleStore extends StoreModule {
+class ArticleForm extends StoreModule {
 
   /**
    * Начальное состояние
@@ -13,7 +13,7 @@ class ArticleStore extends StoreModule {
   }
 
   /**
-   * Загрузка одного товара
+   * Загрузка списка товаров
    */
   async load(id){
 
@@ -39,16 +39,6 @@ class ArticleStore extends StoreModule {
       });
     }
   }
-
-  async update(id, data) {
-    const response = await fetch(`/api/v1/articles/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-  }
 }
 
-export default ArticleStore;
+export default ArticleForm;

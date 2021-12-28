@@ -17,18 +17,23 @@ function ArticleEdit() {
 
   // Начальная загрузка
   useInit(async () => {
-    await store.get('article').load(params.id);
+    await store.get('article').load(params.id)
+    await store.get('categories').fetchAll()
+    await store.get('countries').load()
   }, [params.id]);
 
   const select = useSelector(state => ({
     article: state.article.data,
     waiting: state.article.waiting,
     categories: state.categories.items,
-    countries: state.countries.items
+    countries: state.countries.items,
   }));
 
   const callbacks = {
+    onSave: useCallback((id, data) => store.get('article').update(id, data), [store])
   }
+  console.log(store)
+  const title = useMemo(() => select.article.title, [select.waiting])
 
   return (
     <Layout head={<h1>{select.article.title}</h1>}>
@@ -39,7 +44,8 @@ function ArticleEdit() {
         <ArticleForm 
           article={select.article} 
           categories={select.categories} 
-          countries={select.countries}/>
+          countries={select.countries}
+          onSave={callbacks.onSave}/>
       </Spinner>
     </Layout>
   );
