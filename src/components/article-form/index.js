@@ -13,7 +13,7 @@ function ArticleForm({article, categories, countries, onSave, error}) {
   
   const onInputChange = useCallback(name => {
     return (value) => setData({...data, [name]: value});
-  }, []);
+  }, [data]);
 
   // CSS классы по БЭМ
   const className = cn('ArticleForm');
@@ -25,7 +25,7 @@ function ArticleForm({article, categories, countries, onSave, error}) {
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Описание</div>
-        <Textarea className='Description Input' value={data.description} onChange={onInputChange('description')}/>
+        <Textarea className='Description' value={data.description} onChange={onInputChange('description')}/>
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Страна производитель</div>
