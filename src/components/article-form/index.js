@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import {cn} from '@bem-react/classname'
 import Select from "../select";
 import Input from '../input';
+import Textarea from '../textarea';
 import './styles.css';
 import '../input/styles.css';
 
@@ -24,7 +25,7 @@ function ArticleForm({article, categories, countries, onSave, error}) {
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Описание</div>
-        <textarea className={className('Description Input')} value={data.description} onChange={(event) => setData({...data, description: event.target.value})}/>
+        <Textarea className='Description Input' value={data.description} onChange={onInputChange('description')}/>
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Страна производитель</div>
