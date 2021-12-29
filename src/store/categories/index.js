@@ -1,19 +1,10 @@
 import StoreModule from "../module";
+import createTree from "../../utils/create-tree";
 
 class CategoriesStore extends StoreModule {
 
   initState() {
     return {items: []}
-  }
-
-  createTree(items, idProp, parentProp) {
-    const tree = Object.fromEntries(
-      items.map(n => [ n[idProp], { ...n, children: [] } ])
-    );
-
-    return Object
-      .values(tree)
-      .filter(n => !(tree[n.parent?.[parentProp]] && tree[n.parent?.[parentProp]].children.push(n)));
   }
 
   toList (element, prefix=''){
@@ -29,18 +20,18 @@ class CategoriesStore extends StoreModule {
   /**
    * Загрузка категории товаров
    */
-  async fetchAll(){
+  async load(){
 
     try {
       const response = await fetch(`/api/v1/categories?limit=*&fields=_id,parent,title`);
       const json = await response.json();
       if (json.error) throw new Error(json.error);
 
-      const tree = this.createTree(json.result.items, '_id', '_id');
+      const tree = createTree(json.result.items, '_id', '_id');
 
       const result = this.toList(tree)
 
-      this.updateState({  items: [...this.initState().items, ...result] });
+      this.updateState({items: [...this.initState().items, ...result] });
 
     } catch (e){
       this.updateState(this.initState());

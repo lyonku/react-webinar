@@ -31,7 +31,7 @@ function CatalogFilter() {
   }
 
   useEffect(async () => {
-    await store.categories.fetchAll();
+    await store.categories.load();
   }, []);
 
   const callbacks = {

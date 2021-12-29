@@ -18,7 +18,7 @@ function ArticleEdit() {
   // Начальная загрузка
   useInit(async () => {
     await store.get('article').load(params.id)
-    await store.get('categories').fetchAll()
+    await store.get('categories').load()
     await store.get('countries').load()
   }, [params.id]);
 
@@ -31,7 +31,7 @@ function ArticleEdit() {
   }));
 
   const callbacks = {
-    onSave: useCallback((id, data) => store.get('article').update(id, data), [store])
+    onSave: useCallback((id, data) => store.get('article').update(id, data), [store]),
   }
 
   return (

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import propTypes from 'prop-types';
 import {cn} from '@bem-react/classname'
 import Select from "../select";
@@ -9,13 +9,16 @@ function ArticleForm({article, categories, countries, onSave, error}) {
 
   const [data, setData] = useState(article)
 
+  const onChange = (event) => setData({...data, [event.target.name]: event.target.value});
+
   // CSS классы по БЭМ
   const className = cn('ArticleForm');
+
   return (
     <div className={className()}>
       <div className={className('Prop')}>
         <div className={className('Label')}>Название</div>
-        <input className={className('Input')} value={data.title} onChange={(event) => setData({...data, title: event.target.value})}/>
+        <input className={className('Input')} value={data.title} onChange={}/>
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Описание</div>
@@ -47,11 +50,14 @@ function ArticleForm({article, categories, countries, onSave, error}) {
 
 ArticleForm.propTypes = {
   article: propTypes.object.isRequired,
-  onSave: propTypes.func
+  onSave: propTypes.func,
+  onChange: propTypes.func
 }
 
 ArticleForm.defaultProps = {
   article: {},
+  onChange: () => {
+  }
 }
 
 export default React.memo(ArticleForm);
