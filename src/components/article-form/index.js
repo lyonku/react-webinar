@@ -2,23 +2,25 @@ import React, {useState, useCallback} from 'react';
 import propTypes from 'prop-types';
 import {cn} from '@bem-react/classname'
 import Select from "../select";
+import Input from '../input';
 import './styles.css';
 import '../input/styles.css';
 
 function ArticleForm({article, categories, countries, onSave, error}) {
 
   const [data, setData] = useState(article)
-
-  const onChange = (event) => setData({...data, [event.target.name]: event.target.value});
+  
+  const onInputChange = useCallback(name => {
+    return (value) => setData({...data, [name]: value});
+  }, []);
 
   // CSS классы по БЭМ
   const className = cn('ArticleForm');
-
   return (
     <div className={className()}>
       <div className={className('Prop')}>
         <div className={className('Label')}>Название</div>
-        <input className={className('Input')} value={data.title} onChange={}/>
+        <Input className='Input' value={data.title} onChange={onInputChange('title')}/>
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Описание</div>
@@ -34,11 +36,11 @@ function ArticleForm({article, categories, countries, onSave, error}) {
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Год выпуска</div>
-        <input className={className('Input')} value={data.edition} onChange={(event) => setData({...data, edition: event.target.value})}/>
+        <Input className='Input' value={data.edition} onChange={onInputChange('edition')}/>
       </div>
       <div className={className('Prop')}>
         <div className={className('Label')}>Цена (₽)</div>
-        <input className={className('Input')} value={data.price} onChange={(event) => setData({...data, price: event.target.value})}/>
+        <Input className='Input' value={data.price} onChange={onInputChange('price')}/>
       </div>
       <button className={className('Submit')} onClick={() => onSave(article._id, data)}>Сохранить</button>
       {error && (
